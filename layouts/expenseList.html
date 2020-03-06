@@ -1,0 +1,51 @@
+<div style="margin-left: 2%; margin-right: 2%">
+
+  <div class="box">
+    <div class="box-header">
+      <h3 class="box-title">Expense List</h3>
+    </div>
+    <div class="box-body">
+      <table id="example1" class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>Project Name<br/><input ng-model="search.project_name" class="form-control input-sm"></th>
+            <th>G/L Name<br/><input ng-model="search.gl_name" class="form-control input-sm"></th>
+            <th >Amount<br/><input ng-model="search.amount" class="form-control input-sm"></th>
+            <th >Description<br/><input ng-model="search.description" class="form-control input-sm"></th>
+            <th >Transaction Date<br/><input ng-model="search.created_at" placeholder="year-month-date" class="form-control input-sm"></th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="(key, value) in filteredTodosKKK | filter:{project_name: search.project_name, gl_name: search.gl_name, amount: search.amount, description: search.description,created_at: search.created_at}">
+            <td>{{value.project_name}}</td>                
+            <td>{{value.gl_name}}</td>      
+            <td>{{value.amount}}</td>
+            <td>{{value.description}}</td>
+            <td>{{value.created_at}}</td>
+
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th>Project Name</th>
+            <th>G/L Name</th>
+            <th>Amount</th>
+            <th>Description</th>
+            <th>Transaction Date</th>
+
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+  </div>
+  <pagination 
+  ng-model="currentPageKKK"
+  total-items="expenseList.length"
+  max-size="maxSizeKKK"  
+  items-per-page="numPerPageKKK"
+  boundary-links="true">
+</pagination>
+
+</div>

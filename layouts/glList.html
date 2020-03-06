@@ -1,0 +1,51 @@
+<div style="margin-left: 2%; margin-right: 2%">
+
+  <div class="box">
+    <div class="box-header">
+      <h3 class="box-title">G/L List</h3>
+    </div>
+    <div class="box-body">
+      <table id="example1" class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>G/L Name<br/><input ng-model="search.gl_name" class="form-control input-sm"></th>
+            <th>G/L Type<br/><input ng-model="search.gl_desc" class="form-control input-sm"></th>
+            <th >Project Name<br/><input ng-model="search.project_name" class="form-control input-sm"></th>
+            <th >Project Description<br/><input ng-model="search.project_desc" class="form-control input-sm"></th>
+            <th >G/L Date<br/><input ng-model="search.date" placeholder="year-month-date" class="form-control input-sm"></th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="(key, value) in filteredTodosKKK | filter:{gl_name: search.gl_name, gl_desc: search.gl_desc, project_name: search.project_name, project_desc: search.project_desc,date: search.date}">
+            <td>{{value.gl_name}}</td>                
+            <td>{{value.gl_desc}}</td>      
+            <td>{{value.project_name}}</td>
+            <td>{{value.project_desc}}</td>
+            <td>{{value.date}}</td>
+
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th>G/L Name</th>
+            <th>G/L Type</th>
+            <th>Project Name</th>
+            <th>Project Description</th>
+            <th>G/L Date</th>
+
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+  </div>
+  <pagination 
+  ng-model="currentPageKKK"
+  total-items="expenseList.length"
+  max-size="maxSizeKKK"  
+  items-per-page="numPerPageKKK"
+  boundary-links="true">
+</pagination>
+
+</div>
