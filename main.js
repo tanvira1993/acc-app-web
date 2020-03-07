@@ -51,9 +51,25 @@ accountingApp.controller('AppController', ['$scope', '$rootScope', '$location', 
 accountingApp.run(['$rootScope', '$http','$state','$window', '$filter', '$location',
 	function($rootScope, $http, $state,$window, $filter,$location) {
 		console.log('hello from template main js')
+
+		$rootScope.loginInfo = {
+			password: null
+		};
+
 		// $rootScope.BaseUrl = 'http://localhost:3070/'
 		$rootScope.BaseUrl = 'https://acc-app-server.herokuapp.com/'
+		$rootScope.token = null
+		$rootScope.login = function(){
+			console.log('hello',$rootScope.loginInfo.password)
 
+			if($rootScope.loginInfo.password == 'hello123hello'){
+				$rootScope.token = 'hello set'
+			}
+			else {
+				toastr.error("Credentials Invalid!")
+				$rootScope.token = null	 
+			}
+		}
 		//https://stackoverflow.com/questions/20508898/how-can-i-import-a-sql-file-into-my-heroku-postgres-database
 		//heroku pg:psql --app YOUR_APP_NAME_HERE < updates.sql // upload sql file
 	}]);
