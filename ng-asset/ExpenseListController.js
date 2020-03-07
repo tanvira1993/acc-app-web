@@ -24,6 +24,19 @@ angular.module('accountingApp').controller('ExpenseListController', ['$scope', '
         	});
 
         }
+
+        $scope.DeleteExpenses = function(id){
+            console.log("id=>",id);
+
+            $http({
+                method: 'get',
+                url: $rootScope.BaseUrl+'deleteExpense/'+id
+            }).then(function (response) {
+                $scope.expenseList = response.data;
+                $scope.ExpenseList()
+            }, function (response) {                
+            });
+        }
         $scope.ExpenseList()
     });
 }]);

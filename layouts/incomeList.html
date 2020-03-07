@@ -13,6 +13,7 @@
             <th >Amount<br/><input ng-model="search.amount" class="form-control input-sm"></th>
             <th >Description<br/><input ng-model="search.description" class="form-control input-sm"></th>
             <th >Transaction Date<br/><input ng-model="search.created_at" placeholder="year-month-date" class="form-control input-sm"></th>
+            <th>Action</th>
 
           </tr>
         </thead>
@@ -23,6 +24,7 @@
             <td>{{value.amount}}</td>
             <td>{{value.description}}</td>
             <td>{{value.created_at}}</td>
+            <td><a><i class="fa fa-trash" style="color: red; cursor: pointer;" ng-click="DeleteExpenses(value.income_id)" aria-hidden="true">&nbsp;Delete</i></a></td>
 
           </tr>
         </tbody>
