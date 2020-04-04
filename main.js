@@ -60,7 +60,6 @@ accountingApp.run(['$rootScope', '$http','$state','$window', '$filter', '$locati
 		$rootScope.BaseUrl = 'https://acc-app-server.herokuapp.com/'
 		$rootScope.token = null
 		$rootScope.login = function(){
-			console.log('hello',$rootScope.loginInfo.password)
 
 			if($rootScope.loginInfo.password == 'hello123hello'){
 				$rootScope.token = 'hello set'
