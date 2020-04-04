@@ -2,7 +2,7 @@
 angular.module('accountingApp').controller('GlListController', ['$scope', '$rootScope', '$location', '$timeout', '$http', function($scope, $rootScope, $location, $timeout, $http) {
 	$scope.$on('$viewContentLoaded', function() {
         // initialize core components
-          $scope.filteredTodosKKK = []
+        $scope.filteredTodosKKK = []
         ,$scope.currentPageKKK = 1
         ,$scope.numPerPageKKK = 10
         ,$scope.maxSizeKKK = 5; 
@@ -23,6 +23,36 @@ angular.module('accountingApp').controller('GlListController', ['$scope', '$root
             }, function (response) {                
             });
 
+        }
+
+        $scope.p1 ={
+            pass : null
+        }
+
+        $scope.DeleteExpensesId = function(id){
+            $scope.idFor = id
+            console.log('hgurhgu=>',$scope.idFor)
+        }
+
+
+        $scope.DeleteExpenses = function(){
+            console.log("id=>",$scope.p1.pass);
+            console.log('hgurhgu got id=>',$scope.idFor)
+          if($scope.p1.pass==='123'){   
+            console.log('hgurhgu got id=>',$scope.idFor)
+            $http({
+                method: 'get',
+                url: $rootScope.BaseUrl+'deleteGl/'+$scope.idFor
+            }).then(function (response) {
+                toastr.success("Deleted..!!")
+                $scope.expenseList = response.data;
+                $scope.ExpenseList()
+            }, function (response) {                
+            });
+          }
+          else{
+            toastr.info("Wrong Pass-Code!!")
+          }
         }
         $scope.ExpenseList()
     });

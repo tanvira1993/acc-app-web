@@ -24,18 +24,36 @@ angular.module('accountingApp').controller('IncomeListController', ['$scope', '$
         	});
 
         }
-        $scope.DeleteExpenses = function(id){
-            console.log("id=>",id);
 
+        $scope.p1 ={
+            pass : null
+        }
+
+        $scope.DeleteExpensesId = function(id){
+            $scope.idFor = id
+            console.log('hgurhgu=>',$scope.idFor)
+        }
+
+        $scope.DeleteExpenses = function(){
+            console.log("id=>",$scope.p1.pass);
+            console.log('hgurhgu got id=>',$scope.idFor)
+          if($scope.p1.pass==='123'){   
+            console.log('hgurhgu got id=>',$scope.idFor)
             $http({
                 method: 'get',
-                url: $rootScope.BaseUrl+'deleteIncome/'+id
+                url: $rootScope.BaseUrl+'deleteIncome/'+$scope.idFor
             }).then(function (response) {
+                toastr.success("Deleted..!!")
                 $scope.expenseList = response.data;
                 $scope.ExpenseList()
             }, function (response) {                
             });
+          }
+          else{
+            toastr.info("Wrong Pass-Code!!")
+          }
         }
+        
         $scope.ExpenseList()
     });
 }]);
