@@ -11,7 +11,6 @@
             <th>Project Name<br/><input ng-model="search.project_name" class="form-control input-sm"></th>
             <th>Description<br/><input ng-model="search.project_desc" class="form-control input-sm"></th>
             <th>Action</th>
-            <th>hello</th>
 
           </tr>
         </thead>
@@ -20,7 +19,7 @@
             <td>{{value.project_name}}</td>                
             <td>{{value.project_desc}}</td>      
             <td><a ui-sref="projectDetails({ id: value.project_id })"><i class="fa fa-eye" aria-hidden="true">&nbsp;View</i></a><a style="margin-left: 12px"><i class="fa fa-trash" style="color: red; cursor: pointer;" ng-click="DeleteExpensesId(value.project_id)" data-toggle="modal" data-target="#modal-danger" aria-hidden="true">&nbsp;Delete</i></a></td>
-            <td>hello</td>
+            
           </tr>
         </tbody>
         <tfoot>
