@@ -1,0 +1,66 @@
+<div style="margin-left: 2%; margin-right: 2%">
+
+  <div class="box">
+    <div class="box-header">
+      <h3 class="box-title">Income/Expenses List of This Project</h3>
+    </div>
+    <div class="box-body row">
+      <div class="col-md-6">
+        <table id="example1" class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>Expenses ==> {{expense.extotal}} BDT<br/><input ng-model="search.gl_name" class="form-control input-sm"></th>
+
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="(key, value) in expenseList  | filter:{gl_name: search.gl_name}">
+              <!-- <td>{{value.gl_name + ' ==> ' + value.exgltotal+'BDT'}}</td> -->
+              <td>
+                <h5>{{value.gl_name}}---G/L</h5>
+                <h6>={{value.exgltotal}} BDT</h6>
+              </td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th>Expenses</th>
+
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <div class="col-md-6">
+        <table id="example2" class="table table-bordered table-striped col-md-6">
+          <thead>
+            <tr>
+              <th>Income ==> {{income.extotal}} BDT<br/><input ng-model="r.gl_name" class="form-control input-sm"></th>
+
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="(key, value) in incomeList | filter:{gl_name: r.gl_name}">
+              <!-- <td>{{value.gl_name + '==>' + value.exgltotal+'BDT'}}</td> -->
+              <td>
+                <h5>{{value.gl_name}}---G/L</h5>
+                <h6>={{value.exgltotal}} BDT</h6>
+              </td> 
+
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th>Income</th>
+
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
