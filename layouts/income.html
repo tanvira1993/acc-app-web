@@ -5,8 +5,8 @@
 		<div class="col-md-10">
 			<div class="box box-info">
 				<div class="box-header with-border">
-					<h3 class="box-title">Income Panel</h3>
-					<button type="submit" ui-sref="incomeList" class="btn btn-warning pull-right">Income List</button>
+					<h3 class="box-title">Deposited Panel</h3>
+					<button type="submit" ui-sref="incomeList" class="btn btn-warning pull-right">Deposited List</button>
 
 				</div>
 				<form id="register-form" class="form-horizontal" name="incomeForm" novalidate>
@@ -34,27 +34,14 @@
 							</div>
 						</div>
 
-                       <!--  <div class="form-group">
-							<label for="rate" class="col-sm-2 control-label">Select Group G/L<span style="color: red">&nbsp;*</span></label>
-
-							<div class="col-sm-10">
-                                <select ng-change = "EnableDisable()" name="quotation_id" ng-model="quotation.quotation_id" class="form-control select2dropdown" style="width: 100%;">
-                                    <option value="">Select Requisition No.</option>
-                                    <option ng-repeat="(key, value) in quotationList" value="@{{value.requisition_no}}">@{{value.requisition_no}}</option>
-                                </select>
-							</div>
-						</div> -->
-
 						<div class="form-group">
-							<label for="type" class="col-sm-2 control-label"> G/L Type<span style="color: red">&nbsp;*</span></label>
+							<label for="type" class="col-sm-2 control-label"> Date <span style="color: red">&nbsp;*</span></label>
 
-							<div class="col-sm-10 has-success" ng-class="{'has-error': incomeForm.type.$dirty &amp;&amp;incomeForm.type.$error.required ,  'has-success': incomeForm.type.$valid}">
-								<select  name="type" ng-model="income.type" class="select2dropdown form-control ng-not-empty ng-dirty ng-valid-parse ng-valid ng-valid-required ng-touched" ng-required="true" style="width: 100%;">
-									<option value="">Select Type...</option>
-									<option value="asset">Asset</option>
-									<option value="double">Dobule Side</option>
-								</select>
+							<div class="col-sm-10 ">
+								
+								<input type="date" required class="form-control pull-right"  name="type" ng-model="income.type">
 							</div>
+
 						</div>
 						
 						
@@ -86,5 +73,7 @@
 	<!-- <pre>
 		{{income|json}}
 	</pre>  -->
+	
 </section>
+
 

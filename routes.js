@@ -170,6 +170,90 @@ accountingApp.config(['$stateProvider', '$urlRouterProvider', function($statePro
         }
     })
 
+    .state('transfer', {
+        
+        templateUrl: "layouts/transfer.html",
+        controller: "TransferController",
+        resolve: {
+            deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                return $ocLazyLoad.load({
+                    name: 'accountingApp',
+                    insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+                    files: [
+                    "ng-asset/TransferController.js"
+                    ]
+                });
+            }]
+        }
+    })
+
+    .state('exGlList', {
+        
+        templateUrl: "layouts/exGlList.html",
+        controller: "ExGlListController",
+        resolve: {
+            deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                return $ocLazyLoad.load({
+                    name: 'accountingApp',
+                    insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+                    files: [
+                    "ng-asset/ExGlListController.js"
+                    ]
+                });
+            }]
+        }
+    })
+
     
+    .state('extenTransaction', {
+        
+        templateUrl: "layouts/extenTransaction.html",
+        controller: "ExtenTransactionController",
+        resolve: {
+            deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                return $ocLazyLoad.load({
+                    name: 'accountingApp',
+                    insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+                    files: [
+                    "ng-asset/ExtenTransactionController.js"
+                    ]
+                });
+            }]
+        }
+    })
+
+    .state('exGlDetails', {
+        url: "/exGlDetails?id/type",
+        templateUrl: "layouts/exGlDetails.html",
+        controller: "ExGlDetailsController",
+        resolve: {
+            deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                return $ocLazyLoad.load({
+                    name: 'accountingApp',
+                    insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+                    files: [
+                    "ng-asset/ExGlDetailsController.js"
+                    ]
+                });
+            }]
+        }
+    })
+    
+    .state('glDetails', {
+        url: "/glDetails?id/type",
+        templateUrl: "layouts/glDetails.html",
+        controller: "GlDetailsController",
+        resolve: {
+            deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                return $ocLazyLoad.load({
+                    name: 'accountingApp',
+                    insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+                    files: [
+                    "ng-asset/GlDetailsController.js"
+                    ]
+                });
+            }]
+        }
+    })
 
 }]);

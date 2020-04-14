@@ -1,0 +1,43 @@
+<div style="margin-left: 2%; margin-right: 2%">
+
+	<div class="box">
+		<div class="box-header">
+			<h3 class="box-title">All {{type}} List of This G/L</h3>
+
+
+			<h4><button type="button" class="btn btn-info btn-sm" ng-click="calculation()">Calculate&nbsp;&nbsp;<i class="fa fa-calculator" style="color:blue"></i></button></h4>
+
+		</div>
+		<div class="box-body row">
+			<div class="col-md-12">
+				<table id="example1" class="table table-bordered table-striped">
+					<thead>
+						<tr>
+							<th>Total {{type}} ==> {{value}} BDT<br/><input ng-model="search.date" placeholder="Y-m-d" class="form-control input-sm"></th>
+
+
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="(key, value) in project  | filter:{date: search.date}">
+							<td>
+								<p>{{key+1}}. &nbsp;&nbsp;G/L Name==>{{value.glname}} &nbsp;&nbsp; Amount==> {{value.amount}} BDT &nbsp;&nbsp;Date==>{{value.date| date:"fullDate"}} &nbsp;&nbsp; Description==> {{value.description}}</p>
+
+							</td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<th>{{type}}</th>
+
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+			
+
+		</div>
+
+	</div>
+
+</div>

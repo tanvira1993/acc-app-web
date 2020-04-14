@@ -28,41 +28,42 @@ angular.module('accountingApp').controller('SettingController', ['$scope', '$roo
         				$scope.glForm[input].$setDirty(true);
         				formStatus = false;
 
-                        console.log(formStatus)
-                    }
-                }
-            }
-            console.log(formStatus)
-            
-            return formStatus;
+        				console.log(formStatus)
+        			}
+        		}
+        	}
+        	console.log(formStatus)
+
+        	return formStatus;
         }
 
         $scope.createGl= function(){
-        	if ($scope.validateCreate()) {
+        	if ($scope.gl['name'] == null || $scope.gl['project'] == null || $scope.gl['type'] == null){
+        		toastr.error("Please Fill required field!")
+
+        	}
+        	else {
         		toastr.info("'info', 'Loading!', 'Please wait.'")
         		$http({
         			method: 'post',
         			url: $rootScope.BaseUrl+'gl',
         			data:$scope.gl
         		}).then(function (response) {
-        			$scope.gl=null;
-        			toastr.success("G/L Created..!!") 
+        			$scope.gl['name'] = null
+                    toastr.success("G/L Created..!!") 
 
-        		}, function (response) {
-        			swal({
-        				title: response.data.heading,
-        				text: response.data.message,
-        				html:true,
-        				type: 'error'
-        			}); 
-        			toastr.error("G/L could not be Created!!")
-        		});
+                }, function (response) {
+                	swal({
+                		title: response.data.heading,
+                		text: response.data.message,
+                		html:true,
+                		type: 'error'
+                	}); 
+                	toastr.error("G/L could not be Created!!")
+                });
         	}
 
-        	else{
-        		toastr.error("Please Fill required field!")
-
-        	}
+        	
 
         	
         }
@@ -81,6 +82,57 @@ angular.module('accountingApp').controller('SettingController', ['$scope', '$roo
         }
 
         $scope.getAllProjectList()
+
+        $scope.getAllGlList= function (id,type)
+        {
+            console.log('TO =>p-id & type =>',id,type);
+            $http({
+                method: 'get',
+                url: $rootScope.BaseUrl+'glByProjectId/' +id +'/' +type,
+            }).then(function (response) {
+                $scope.gl= response.data;
+            }, 
+            function (response) {               
+
+            });
+        }
+
+        $scope.groupgGl = {
+            project: null,
+            type: null,
+            name: null,
+            gl : null
+        };
+        $scope.createExtGl= function(){
+            if ($scope.groupgGl['name'] == null || $scope.groupgGl['type'] == null || $scope.groupgGl['project'] == null || $scope.groupgGl['gl'] == null){
+                toastr.error("Please Fill required field!")
+
+            }
+            else {
+                toastr.info("'info', 'Loading!', 'Please wait.'")
+                $http({
+                    method: 'post',
+                    url: $rootScope.BaseUrl+'exGl',
+                    data:$scope.groupgGl
+                }).then(function (response) {
+                    $scope.groupgGl['name'] = null
+                    toastr.success("E G/L Created..!!") 
+
+                }, function (response) {
+                    swal({
+                        title: response.data.heading,
+                        text: response.data.message,
+                        html:true,
+                        type: 'error'
+                    }); 
+                    toastr.error("E G/L could not be Created!!")
+                });
+            }
+
+            
+
+            
+        }
         
         initSelect2Dropdown();
     });

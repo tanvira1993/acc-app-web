@@ -12,18 +12,18 @@
             <th>G/L Name<br/><input ng-model="search.gl_name" class="form-control input-sm"></th>
             <th >Amount<br/><input ng-model="search.amount" class="form-control input-sm"></th>
             <th >Description<br/><input ng-model="search.description" class="form-control input-sm"></th>
-            <th >Transaction Date<br/><input ng-model="search.created_at" placeholder="year-month-date" class="form-control input-sm"></th>
+            <th >Transaction Date<br/><input ng-model="search.trans_type" placeholder="year-month-date" class="form-control input-sm"></th>
             <th>Action</th>
 
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="(key, value) in filteredTodosKKK | filter:{project_name: search.project_name, gl_name: search.gl_name, amount: search.amount, description: search.description,created_at: search.created_at}">
+          <tr ng-repeat="(key, value) in filteredTodosKKK | filter:{project_name: search.project_name, gl_name: search.gl_name, amount: search.amount, description: search.description,trans_type: search.trans_type}">
             <td>{{value.project_name}}</td>                
             <td>{{value.gl_name}}</td>      
             <td>{{value.amount}}</td>
             <td>{{value.description}}</td>
-            <td>{{value.created_at | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+            <td>{{value.trans_type | date:"fullDate"}}</td>
             <td><a><i class="fa fa-trash" style="color: red; cursor: pointer;" ng-click="DeleteExpensesId(value.expense_id)" data-toggle="modal" data-target="#modal-danger" aria-hidden="true">&nbsp;Delete</i></a></td>
           </tr>
         </tbody>

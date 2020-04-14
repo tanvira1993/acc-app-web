@@ -1,0 +1,83 @@
+<div style="margin-left: 2%; margin-right: 2%">
+
+	<div class="box">
+		<div class="box-header">
+			<h3 class="box-title">G/L List</h3>
+		</div>
+		<div class="box-body">
+			<table id="example1" class="table table-bordered table-striped">
+				<thead>
+					<tr>
+						<th>Ex. G/L Name<br/><input ng-model="search.exgl_name" class="form-control input-sm"></th>
+						<th>G/L Name<br/><input ng-model="search.gl_name" class="form-control input-sm"></th>
+						<th>G/L Type<br/><input ng-model="search.gl_desc" class="form-control input-sm"></th>
+						<th >Project Name<br/><input ng-model="search.project_name" class="form-control input-sm"></th>
+						<th >Project Description<br/><input ng-model="search.project_desc" class="form-control input-sm"></th>
+						<!-- <th >G/L Date<br/><input ng-model="search.date" placeholder="year-month-date" class="form-control input-sm"></th> -->
+						<th>Action</th>
+
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="(key, value) in filteredTodosKKK | filter:{exgl_name: search.exgl_name,gl_name: search.gl_name, gl_desc: search.gl_desc, project_name: search.project_name, project_desc: search.project_desc}">
+						<td>{{value.exgl_name}}</td>                
+						<td>{{value.gl_name}}</td>                
+						<td>{{value.gl_desc}}</td>      
+						<td>{{value.project_name}}</td>
+						<td>{{value.project_desc}}</td>
+						<!-- <td>{{value.date | date:'yyyy-MM-dd HH:mm:ss'}}</td> -->
+						<td><a ui-sref="exGlDetails({ id: value.exgl_id,type: value.gl_desc })"><i class="fa fa-eye" aria-hidden="true">&nbsp;View&nbsp;</i></a><a><i class="fa fa-trash" style="color: red; cursor: pointer;" ng-click="DeleteExpensesId(value.exgl_id)" data-toggle="modal" data-target="#modal-danger" aria-hidden="true">&nbsp;Delete</i></a></td> 
+
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<th>Ex. G/L Name</th>
+						<th>G/L Name</th>
+						<th>G/L Type</th>
+						<th>Project Name</th>
+						<th>Project Description</th>
+						<th>G/L Date</th>
+
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+
+	</div>
+	<pagination 
+	ng-model="currentPageKKK"
+	total-items="expenseList.length"
+	max-size="maxSizeKKK"  
+	items-per-page="numPerPageKKK"
+	boundary-links="true">
+</pagination>
+
+</div>
+
+<div class="modal modal-danger fade" id="modal-danger">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">Confirm Delete</h4>
+				</div>
+				<div class="modal-body">
+					<div class="form-group" >
+						<label for="desc" class="col-sm-2 control-label">Pass <span style="color: red">&nbsp;*</span></label>
+
+						<div class="col-sm-10 ">
+							<input type="password"  class="form-control" name="pass"  ng-model="p1.pass"  placeholder="Pass-code">
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+					<button type="button" ng-click="DeleteExpenses()" class="btn btn-outline" data-dismiss="modal">Delete</button>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>

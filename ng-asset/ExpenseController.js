@@ -40,6 +40,8 @@ angular.module('accountingApp').controller('ExpenseController', ['$scope', '$roo
 
 
         $scope.createIncome = function(){
+        	console.log("Select Date=>", $scope.income['type'])
+
         	if ($scope.validateCreate()) {
         		toastr.info("'info', 'Loading!', 'Please wait.'")
         		$http({
@@ -47,8 +49,10 @@ angular.module('accountingApp').controller('ExpenseController', ['$scope', '$roo
         			url: $rootScope.BaseUrl+'expense',
         			data:$scope.income
         		}).then(function (response) {
-        			$scope.income=null;
-        			toastr.success("Amount Added..!!") 
+        			$scope.income['type']=null;
+        			$scope.income['amount']=null;
+        			$scope.income['desc']=null;
+        			toastr.success("Expenses Amount Added..!!") 
 
         		}, function (response) {
         			swal({
@@ -84,19 +88,19 @@ angular.module('accountingApp').controller('ExpenseController', ['$scope', '$roo
 
         $scope.getAllGlList= function (id)
         {
-            console.log('p-id',id);
-            $http({
-              method: 'get',
-              url: $rootScope.BaseUrl+'glByProjectId/' +id +'/' +'100',
-          }).then(function (response) {
-              $scope.gls= response.data;
-          }, 
-          function (response) {               
+        	console.log('p-id',id);
+        	$http({
+        		method: 'get',
+        		url: $rootScope.BaseUrl+'glByProjectId/' +id +'/' +'100',
+        	}).then(function (response) {
+        		$scope.gls= response.data;
+        	}, 
+        	function (response) {               
 
-          });
-      }
-      
-      initSelect2Dropdown();  
+        	});
+        }
 
-  });
+        initSelect2Dropdown();  
+
+    });
 }]);

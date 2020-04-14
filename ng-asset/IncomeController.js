@@ -3,6 +3,9 @@
 angular.module('accountingApp').controller('IncomeController', ['$scope', '$rootScope', '$location', '$timeout', '$http', function($scope, $rootScope, $location, $timeout, $http) {
 	$scope.$on('$viewContentLoaded', function() {
         // initialize core components
+
+        
+
         const initSelect2Dropdown = function () {
         	$timeout(function () {
         		$(".select2dropdown").select2({
@@ -40,6 +43,7 @@ angular.module('accountingApp').controller('IncomeController', ['$scope', '$root
 
 
         $scope.createIncome = function(){
+        	console.log("Select Date=>", $scope.income['type'])
         	if ($scope.validateCreate()) {
         		toastr.info("'info', 'Loading!', 'Please wait.'")
         		$http({
@@ -47,8 +51,10 @@ angular.module('accountingApp').controller('IncomeController', ['$scope', '$root
         			url: $rootScope.BaseUrl+'income',
         			data:$scope.income
         		}).then(function (response) {
-        			$scope.income=null;
-        			toastr.success("Amount Added..!!") 
+        			$scope.income['type']=null;
+        			$scope.income['amount']=null;
+        			$scope.income['desc']=null;
+        			toastr.success("Deposit Amount Added..!!") 
 
         		}, function (response) {
         			swal({
@@ -84,19 +90,19 @@ angular.module('accountingApp').controller('IncomeController', ['$scope', '$root
 
         $scope.getAllGlList= function (id)
         {
-            console.log('p-id',id);
-            $http({
-              method: 'get',
-              url: $rootScope.BaseUrl+'glByProjectId/' +id +'/' +'200',
-          }).then(function (response) {
-              $scope.gls= response.data;
-          }, 
-          function (response) {               
+        	console.log('p-id',id);
+        	$http({
+        		method: 'get',
+        		url: $rootScope.BaseUrl+'glByProjectId/' +id +'/' +'200',
+        	}).then(function (response) {
+        		$scope.gls= response.data;
+        	}, 
+        	function (response) {               
 
-          });
-      }
+        	});
+        }
 
-      initSelect2Dropdown();  
+        initSelect2Dropdown();  
 
-  });
+    });
 }]);

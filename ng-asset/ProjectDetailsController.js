@@ -61,5 +61,9 @@ angular.module('accountingApp').controller('ProjectDetailsController', ['$scope'
         }
         $scope.getTotalExpense()
 
+        $scope.calculation = function (){
+            $scope.value = $scope.income['extotal'] - $scope.expense['extotal'] + ' BDT'
+        }
+
     });
 }]);

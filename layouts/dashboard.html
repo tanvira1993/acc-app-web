@@ -1,13 +1,13 @@
 <section class="content">
 	<div class="row">
-	
+
 		<div class="col-lg-3 col-xs-6" ng-if="idUserRole!=0">
 			
 			<div class="small-box bg-green">
 				<div class="inner">
-					<h3>Income<sup style="font-size: 20px"></sup></h3>
+					<h3>Deposit<sup style="font-size: 20px"></sup></h3>
 
-					<p>Income Panel</p>
+					<p>Deposited Panel</p>
 				</div>
 				<div class="icon">
 					<i class="ion ion-stats-bars"></i>
@@ -58,6 +58,49 @@
 			</div>
 		</div>
 
-    </div>
+	</div>
+	<div class="row">
+		<div class="col-lg-3 col-xs-6" ng-if="idUserRole!=0">
+			<div class="small-box bg-red">
+				<div class="inner">
+					<h3>Transfer </h3>
+
+					<p>Amount Transfer panel</p>
+				</div>
+				<div class="icon">
+					<i class="ion ion-pie-graph"></i>
+				</div>
+				<a ui-sref="transfer" class="small-box-footer">Go <i class="fa fa-arrow-circle-right"></i></a>
+			</div>
+		</div>
+		
+		<div class="col-lg-3 col-xs-6" ng-if="idUserRole!=0">
+			<div class="small-box bg-green">
+				<div class="inner">
+					<h3>Ext. Trans.</h3>
+
+					<p>Exten. Transaction panel</p>
+				</div>
+				<div class="icon">
+					<i class="ion ion-pie-graph"></i>
+				</div>
+				<a ui-sref="extenTransaction" class="small-box-footer">Go <i class="fa fa-arrow-circle-right"></i></a>
+			</div>
+		</div>
+
+		<div class="col-lg-3 col-xs-6" ng-if="idUserRole!=0">
+			<div class="small-box bg-purple">
+				<div class="inner">
+					<h3>Total Value</h3>
+
+					<p>Total Expenses - {{project.resp.rows[0].ex}}</p>
+					<p>Total Deposits - {{project.r.rows[0].inc}}&nbsp;&nbsp; C.Amount-{{project.r.rows[0].inc-project.resp.rows[0].ex}}</p>
+				</div>
+				<div class="icon">
+					<i class="ion ion-pie-graph"></i>
+				</div>
+				<!-- <a ui-sref="extenTransaction" class="small-box-footer">Go <i class="fa fa-arrow-circle-right"></i></a> -->
+			</div>
+		</div>
+	</div>
 </section>
-    

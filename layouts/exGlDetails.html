@@ -1,0 +1,46 @@
+<div style="margin-left: 2%; margin-right: 2%">
+
+	<div class="box">
+		<div class="box-header">
+			<h3 class="box-title">All {{type}} List of This G/L</h3>
+
+
+			<h4><button type="button" class="btn btn-info btn-sm" ng-click="calculation()">Calculate&nbsp;&nbsp;<i class="fa fa-calculator" style="color:blue"></i></button></h4>
+
+		</div>
+		<div class="box-body row">
+			<div class="col-md-6">
+				<table id="example1" class="table table-bordered table-striped">
+					<thead>
+						<tr>
+							<th>Total {{type}} ==> {{value}} BDT<br/><input ng-model="search.exgl_name" placeholder="Ext. G/L Name" class="form-control input-sm"></th>
+
+
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="(key, value) in project  | filter:{gl_name: search.exgl_name}">
+							<td>
+								<h5>Parent G/L ==>{{value.glname}}</h5>
+								<h5>Child G/L ==>{{value.exglname}}</h5>
+								<h6>Amount==> {{value.amount}} BDT</h6>
+								<h6>Date==>{{value.date| date:"fullDate"}}</h6>
+								<h6>Description==> {{value.description}} </h6>								
+							</td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<th>{{type}}</th>
+
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+			
+
+		</div>
+
+	</div>
+
+</div>
